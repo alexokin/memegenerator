@@ -8,29 +8,35 @@
     <title>Memegen</title>
 </head>
 <body onload="onInit()">
-    <header>
-        <nav class="nav-bar">
-            <ul>
-                <li>Gallery</li>
-                <li>Memes</li>
-                <li>About</li>
+    <!-- <div class="main-screen full" onclick="toggleMenu()"></div> -->
+    <header class="main-header flex align-center space-between">
+        <div class="logo">Memegen</div>
+        <nav class="main-nav">
+            <ul class="flex clean-list">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Memes</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         </nav>
+        <!-- <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button> -->
     </header>
     <main>
-        <section class="meme-editor hide">
-            <div class="meme-editor-panel">
-
-            </div>
+        <section class="meme-editor hide flex align-center">
+            
             <div class="canvas-container">
-                <canvas id="memeCanvas"></canvas>
+                <canvas id="memeCanvas" height="500px" width="500px"></canvas>
+            </div>
+            <div class="meme-editor-panel">
+                <input type="text" name="memeText" id="memeText" oninput="onSetLineText(this.value)">
             </div>
         </section>
-        <section class="meme-gallery hide">
+        <section class="meme-gallery flex align-center hide">
 
         </section>
     </main>
 </body>
 <script src="js/meme.service.js"></script>
 <script src="js/meme.controller.js"></script>
+<script src="js/gallery.controller.js"></script>
 </html>
+
