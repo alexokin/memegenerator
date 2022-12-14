@@ -35,7 +35,7 @@ function drawMeme(meme) {
     let memeFontColor = meme.lines[0].color
     let memeTxtAlign = meme.lines[0].align
     const elImg = new Image()
-    elImg.src = `./img/meme-imgs (square)/${memeId}.jpg`
+    elImg.src = `img/meme-imgs (square)/${memeId}.jpg`
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(memeTxt, 150,150, memeFontSize, memeFontColor, memeTxtAlign)

@@ -46,7 +46,7 @@ function _createImages() {
 function _createImage(id) {
   return {
     id,
-    url: `./img/meme-imgs (square)/${id}.jpg`,
+    url: `img/meme-imgs (square)/${id}.jpg`,
     keywords: ["funny", "trump"],
   };
 }
