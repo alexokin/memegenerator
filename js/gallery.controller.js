@@ -36,6 +36,6 @@ function openEditor() {
   elGallery.classList.add("hide");
 }
 
-function OpenMenu() {
+function toggleMenu() {
   document.body.classList.toggle('menu-open');
 }
