@@ -4,14 +4,23 @@ var gElCanvas;
 var gCtx;
 
 function onInit() {
+  gElCanvas = document.getElementById("memeCanvas");
+  gCtx = gElCanvas.getContext("2d");
+  
   renderGallery();
+  // resizeCanvas()
   renderMeme();
+  
 }
 
 function renderMeme() {
-  gElCanvas = document.getElementById("memeCanvas");
-  gCtx = gElCanvas.getContext("2d");
   drawMeme();
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth - 10;
+    gElCanvas.height = elContainer.offsetWidth - 10;
 }
 
 function drawText(text, x, y, fontSize, fontColor, txtAlign) {
@@ -33,17 +42,10 @@ function getElCanvas() {
 function drawMeme() {
   var meme = getMeme();
   var memeId = meme.selectedImgId;
-//   var memeTxt = meme.lines[meme.selectedLineIdx].txt;
-//   var memeFontSize = meme.lines[meme.selectedLineIdx].size;
-//   var memeFontColor = meme.lines[meme.selectedLineIdx].color;
-//   var memeTxtAlign = meme.lines[meme.selectedLineIdx].align;
-//   var memePosX = meme.lines[meme.selectedLineIdx].x;
-//   var memePosY = meme.lines[meme.selectedLineIdx].y;
   const elImg = new Image();
-  elImg.src = `img/meme-imgs (square)/${memeId}.jpg`;
-  elImg.onload = () => {
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    meme.lines.forEach((line, idx) => {
+  elImg.src = `img/meme-imgs (square)/${++memeId}.jpg`;
+  gCtx.drawImage(elImg, 0, 0);
+  meme.lines.forEach((line) => {
       drawText(
         line.txt,
         line.x,
@@ -53,12 +55,11 @@ function drawMeme() {
         line.align
       );
     });
-  };
 }
 
-function clearCanvas() {
-  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-}
+// function clearCanvas() {
+//   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+// }
 
 function onSwitchLine() {
   var selectedLineIdx = switchLine();
@@ -86,20 +87,14 @@ function onChangeTextColor(color) {
   renderMeme();
 }
 
-// function onAddLine() {
-//   document.querySelector("#memeText").value = "";
-//   document.querySelector("#memeText").focus();
-//   addLineToMeme(false); // false = if lines empty
-// }
+function onAddLine() {
+  document.querySelector("#memeText").value = "";
+  document.querySelector("#memeText").focus();
+  addLineToMeme(false); // false = if lines empty
+}
 
 function onChangeFontSize(value) {
-  var elChangeFontSizeBtn = value;
-  var signOfBtn = elChangeFontSizeBtn.innerText;
-  if (signOfBtn === "+") {
-    increaseFontSize();
-    renderMeme();
-  } else {
-    decreaseFontSize();
-    renderMeme();
-  }
+  changeFontSize(value)
+  renderMeme();
+  
 }
