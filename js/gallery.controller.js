@@ -35,3 +35,7 @@ function openEditor() {
   
   elGallery.classList.add("hide");
 }
+
+function OpenMenu() {
+  document.body.classList.toggle('menu-open');
+}

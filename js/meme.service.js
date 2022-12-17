@@ -76,6 +76,13 @@ function decreaseFontSize() {
   console.log(gMeme.lines[gMeme.selectedLineIdx].size);
 }
 
+function changeLinesId(gMeme) {
+  gMeme.lines.forEach(function(line,idx){
+    line.lineId = idx;
+  })
+  gLineId = gMeme.lines.length;
+}
+
 function addLineToMeme(isEmptyLines) {
   if (gMeme.lines.length === 1 && gMeme.lines[0].txt === '') return;
   var elCanvas = getElCanvas();

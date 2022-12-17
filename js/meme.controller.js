@@ -93,8 +93,33 @@ function onAddLine() {
   addLineToMeme(false); // false = if lines empty
 }
 
+function onDeleteLine() {
+  document.querySelector('.memeText').value = '';
+  var meme = getMeme();
+  if (meme.lines.length === 1 && meme.lines[0].text === '') return;
+
+  var currlineIdx = meme.selectedLineIdx;
+  meme.lines.splice(currlineIdx, 1);
+  if (meme.lines.length) {
+    renderMeme()
+      changeLinesId(meme);
+      if (currlineIdx) {
+          meme.selectedLineIdx = currlineIdx - 1;
+      } else {
+          meme.selectedLineIdx = 0;
+      }
+  } else {
+      addLineToMeme(true); //true = if is line empty
+      renderMeme()
+  }
+}
+
 function onChangeFontSize(value) {
   changeFontSize(value)
   renderMeme();
-  
+}
+
+function clickChangeColor() {
+  var elColor = document.getElementById('colorpicker');
+  elColor.click();
 }
