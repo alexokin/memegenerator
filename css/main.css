@@ -17,18 +17,17 @@ button {
 
 @font-face {
     font-family: Poppins;
-    src: url(fonts/Poppins-Medium.ttf);
+    src: url(/fonts/Poppins-Medium.ttf);
   }
 
 @font-face {
     font-family: Poppins - Extra Bold;
-    src: url(fonts/Poppins-ExtraBold.ttf);
-    font-weight: bolder;
+    src: url(/fonts/Poppins-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: Poppins - Semi Bold;
-    src: url(fonts/Poppins-SemiBold.ttf);
+    src: url(/fonts/Poppins-SemiBold.ttf);
 }
 .main-layout {
     margin-left: 20px;
@@ -258,6 +257,13 @@ button {
 body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
+}
+
+@media (max-width: 735px){
+    .canvas-container {
+    max-height: 300px;
+    max-width: 300px;
+    }
 }
 
 @media (max-width: 940px) {
