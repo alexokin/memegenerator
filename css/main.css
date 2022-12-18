@@ -2,17 +2,22 @@
     box-sizing: border-box;
 }
 
-html {
+/* html {
     font-family: "Poppins";
-}
+} */
 
 body {
     margin: 0;
-    background-color: #FCFFE7;
+    background-color: #564A4A;
 }
 
 button {
     cursor: pointer;
+}
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(../fonts/PressStart2P-Regular.ttf);
 }
 
 @font-face {
@@ -29,19 +34,15 @@ button {
     font-family: Poppins - Semi Bold;
     src: url(../fonts/Poppins-SemiBold.ttf);
 }
-.main-layout {
-    margin-left: 20px;
-    margin-right: 20px;
-}
+
 .main-header {
-    font-family: "Poppins";
+    font-family: "PressStart2P";
     font-size: 21px;
     height: 160px;
-    color: #ffffff;
-    border-radius: 37px;
+    color: #564A4A;
     height: 73px;
     background-color: #5970c1;
-    background-image: linear-gradient(-86deg, #BAD7E9 0%, #2B3467 100%);
+    background-image: linear-gradient(-86deg, #9FE6A0 0%, #4AA96C 100%);
 }
 
 .main-header .main-nav a {
@@ -60,6 +61,7 @@ button {
 
 .main-nav {
     padding-right: 10rem;
+    z-index: 10;
 }
 
 .logo {
@@ -72,7 +74,7 @@ button {
     margin: 0 auto 25px;
     flex-wrap: wrap;
     gap: 0.3rem;
-    background-color: #EB455F;
+    background-color: #F55C47;
 }
 
 /* Style for "Rectangle" */
@@ -107,7 +109,7 @@ button {
     gap: 3.5rem;
     box-shadow: 1px 5px 0 #bbc4d1, inset 0 5px 0 #ffffff;
     border-radius: 30px;
-    background-color: #EB455F;
+    background-color: #F55C47;
     
 }
 
@@ -262,7 +264,15 @@ body.menu-open .main-screen {
 
 
 /* MEDIA QUERIES */
-
+@media (max-width: 550px) {
+    .logo{
+        padding-left: 0;
+        margin-left: 25px;
+    }
+    .main-nav{
+        padding-right: 0;
+    }
+}
 @media (max-width: 785px){
     .menu-toggle-btn {
         display: inline;
