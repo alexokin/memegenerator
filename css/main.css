@@ -17,17 +17,17 @@ button {
 
 @font-face {
     font-family: Poppins;
-    src: url(/fonts/Poppins-Medium.ttf);
+    src: url(./fonts/Poppins-Medium.ttf);
   }
 
 @font-face {
     font-family: Poppins - Extra Bold;
-    src: url(/fonts/Poppins-ExtraBold.ttf);
+    src: url(./fonts/Poppins-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: Poppins - Semi Bold;
-    src: url(/fonts/Poppins-SemiBold.ttf);
+    src: url(./fonts/Poppins-SemiBold.ttf);
 }
 .main-layout {
     margin-left: 20px;
