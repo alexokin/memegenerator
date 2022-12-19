@@ -157,7 +157,7 @@ button {
 }
 
 .btn-line-1 > *:hover {
-    margin-left: 35px;
+    
     opacity: 1;
 }
 
@@ -176,7 +176,7 @@ button {
     opacity: 0.5;
 }
 .btn-line-2 > *:hover {
-    margin-left: 35px;
+    
     opacity: 1;
 }
 
@@ -242,7 +242,7 @@ button {
     box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #ffffff;
     border-radius: 15px;
     background-color: #8f44bb;
-    font-family: 'Poppins';
+    font-family: 'PressStart2P';
     font-size:1.3125rem;
     opacity: 0.5;
     text-decoration: none;
@@ -254,7 +254,7 @@ button {
     box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #ffffff;
     border-radius: 15px;
     background-color: #1e7cd3;
-    font-family: 'Poppins';
+    font-family: 'PressStart2P';
     font-size:1.3125rem;
     opacity: 0.5;
     text-decoration: none;

@@ -128,21 +128,6 @@ function drawText(text, x, y, fontSize, fontColor, txtAlign) {
   gCtx.strokeText(text, x, y);
 }
 
-// function drawRect(memeLine) {
-//   var x = memeLine.rectSize.pos.x;
-//   var y = memeLine.rectSize.pos.y;
-//   var width = gElCanvas.width;
-//   var height = memeLine.size;
-//   gCtx.beginPath();
-//   gCtx.rect(x, y, width, height + 10);
-//   gCtx.fillStyle = "#aab5b83d";
-//   gCtx.fillRect(x, y, width, height + 10);
-//   gCtx.strokeStyle = "black";
-//   gCtx.stroke();
-// }
-
-
-
 function drawMeme() {
   var meme = getMeme();
   var memeId = meme.selectedImgId;
@@ -153,10 +138,6 @@ function drawMeme() {
     drawText(line.txt, line.x, line.y, line.size, line.color, line.align);
   });
 }
-
-// function clearCanvas() {
-//   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-// }
 
 function onSwitchLine() {
   var meme = getMeme();
@@ -187,7 +168,7 @@ function onChangeTextColor(color) {
 function onAddLine() {
   document.querySelector("#memeText").value = "";
   document.querySelector("#memeText").focus();
-  addLineToMeme(false); // false = if lines empty
+  addLineToMeme(false);
 }
 
 function onDeleteLine() {
@@ -209,7 +190,7 @@ function onDeleteLine() {
       meme.selectedLineIdx = 0;
     }
   } else {
-    addLineToMeme(true); //true = if is line empty
+    addLineToMeme(true);
     renderMeme();
   }
 }
@@ -225,7 +206,7 @@ function clickChangeColor() {
 }
 
 function downloadMeme(elLink) {
-  renderMeme(); //Chack if Need
+  renderMeme()
   var elCanvas = getElCanvas();
   const data = elCanvas.toDataURL();
   elLink.href = data;

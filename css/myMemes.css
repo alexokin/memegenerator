@@ -6,3 +6,16 @@
     flex-wrap: wrap;
     gap: 0.3rem;
 }
+
+.load {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.selected{
+    border:3px solid #9FE6A0;
+}
+
+.dowload-btn a {
+    text-decoration: none;
+}
