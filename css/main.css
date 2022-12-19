@@ -52,7 +52,7 @@ button {
 }
 
 .main-header .main-nav a:hover {
-    color: var(--clr2);
+    color: #4AA96C
 }
 
 .main-header .main-nav li:not(:last-child) {
