@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
+    <link href="icons/pepe.ico" rel="icon" type="image/x-icon" />
     <title>Memegen</title>
   </head>
   <body class="main-layout" onload="onInit()">
@@ -88,6 +89,7 @@
           </div>
           <div class="btn-line-4">
             <button
+              title="Align left"
               class="align-left-btn"
               onclick="changeAlign('start')"
               
@@ -96,6 +98,7 @@
               <img class="icon" src="icons/lefttoright.png" alt=" " />
             </button>
             <button
+            title="Align center"
             class="align-center-btn"
               onclick="changeAlign('center')"
             >
@@ -106,6 +109,7 @@
               />
             </button>
             <button
+            title="Align right"
             class="align-right-btn"
               onclick="changeAlign('end')"
             >
@@ -122,6 +126,7 @@
       </section>
       <section class="meme-gallery flex justify-center"></section>
     </main>
+    
   </body>
   <script src="js/meme.service.js"></script>
   <script src="js/meme.storage.service.js"></script>
