@@ -2,19 +2,22 @@
 
 var gImgs;
 var gImgIdx = 0;
-var gLineId
+var gLineId = 0;
+var gFontSize = 30;
+
 var gMeme = {
   selectedImgId: 1,
-  selectedLineIdx: 0,
+  selectedLineIdx: gLineId,
   lines: [
     {
-      lineId: 0,
+      lineId: gLineId,
       txt: "add text here",
-      size: "30px",
+      size: gFontSize,
       align: "center",
       color: "#fff",
-      x:150,
-      y:50,
+      x: 250,
+      y: 50,
+      isDrag: false,
     },
   ],
 };
@@ -23,6 +26,15 @@ _createImages();
 
 function getMeme() {
   return gMeme;
+}
+
+function setLineDrag(isDrag) {
+  gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag;
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].x += dx;
+  gMeme.lines[gMeme.selectedLineIdx].y += dy;
 }
 
 function getImgs() {
@@ -37,11 +49,11 @@ function resetMeme() {
       {
         lineId: 0,
         txt: "add text here",
-        size: "30px",
+        size: gFontSize,
         align: "center",
         color: "#fff",
-        x:150,
-        y:50,
+        x: 250,
+        y: 50,
       },
     ],
   };
@@ -52,69 +64,70 @@ function changeTextColor(color) {
 }
 
 function changeFontSize(diff) {
-  if (gMeme.lines.length === 1 && gMeme.lines[0].txt === '') return;
-  // gMeme.lines[gMeme.selectedLineIdx].size += diff;
-  var fontSizeStr = gMeme.lines[gMeme.selectedLineIdx].size;
-  var fontSizeNum = +fontSizeStr.slice(0, 2);
-  fontSizeNum += diff
-  gMeme.lines[gMeme.selectedLineIdx].size = `${fontSizeNum.toString()}px`;
+  if (gMeme.lines.length === 1 && gMeme.lines[0].txt === "") return;
+  var fontSize = gMeme.lines[gMeme.selectedLineIdx].size;
 
-
-  // console.log("increase font");
-  
-  // var incNum = ++fontSizeNum;
-  // gMeme.lines[gMeme.selectedLineIdx].size = `${incNum.toString()}px`;
-  // console.log(gMeme.lines[gMeme.selectedLineIdx].size);
-}
-
-function decreaseFontSize() {
-  console.log("decrease font");
-  var fontSizeStr = gMeme.lines[gMeme.selectedLineIdx].size;
-  var fontSizeNum = +fontSizeStr.slice(0, 2);
-  var decNum = --fontSizeNum;
-  gMeme.lines[gMeme.selectedLineIdx].size = `${decNum.toString()}px`;
-  console.log(gMeme.lines[gMeme.selectedLineIdx].size);
+  fontSize += diff;
+  gMeme.lines[gMeme.selectedLineIdx].size = fontSize;
 }
 
 function changeLinesId(gMeme) {
-  gMeme.lines.forEach(function(line,idx){
+  gMeme.lines.forEach(function (line, idx) {
     line.lineId = idx;
-  })
+  });
   gLineId = gMeme.lines.length;
 }
 
 function addLineToMeme(isEmptyLines) {
-  if (gMeme.lines.length === 1 && gMeme.lines[0].txt === '') return;
+  if (gMeme.lines.length === 1 && gMeme.lines[0].txt === "") return;
   var elCanvas = getElCanvas();
-  var yPos = (gMeme.lines.length === 1) ? elCanvas.height - 20 : elCanvas.height / 2;
+  var yPos =
+    gMeme.lines.length === 1 ? elCanvas.height - 20 : elCanvas.height / 2;
   gMeme.lines.push({
-    lineId: gLineId++,
-    txt: '',
-    size: '30px',
-    align: 'center',
-    color: 'white',
+    lineId: ++gLineId,
+    txt: "",
+    size: gFontSize,
+    align: "center",
+    color: "white",
     x: elCanvas.width / 2,
-    y: yPos
-  })
+    y: yPos,
+  });
   if (!isEmptyLines) gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
 function switchLine() {
-  if ((gMeme.selectedLineIdx === 0)) gMeme.selectedLineIdx = gMeme.lines.length - 1;
-    else gMeme.selectedLineIdx--;
-    return gMeme.selectedLineIdx
+  if (gMeme.selectedLineIdx === 0)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+  else gMeme.selectedLineIdx--;
+  return gMeme.selectedLineIdx;
 }
 
 function setLineTxt(text) {
-  var selectedLineIdx = gMeme.selectedLineIdx
+  var selectedLineIdx = gMeme.selectedLineIdx;
   gMeme.lines[selectedLineIdx].txt = text;
 }
 
 function setImg(elImg) {
-  var memeImg = elImg
+  var memeImg = elImg;
   console.log(memeImg);
-  gMeme.selectedImgId = +memeImg.dataset.memeimgidx
+  gMeme.selectedImgId = +memeImg.dataset.memeimgidx;
   console.log(typeof gMeme.selectedImgId);
+}
+
+function saveMeme() {
+  var numOfSaveImg = loadFromStorage('numOfSaveImg');
+  if (!numOfSaveImg) {
+      saveToStorage('numOfSaveImg', 1);
+      numOfSaveImg = 1;
+  } else {
+      numOfSaveImg++;
+  }
+  renderMeme();
+  var elCanvas = getElCanvas();
+  var imgContent = elCanvas.toDataURL();
+  saveToStorage(`meme${numOfSaveImg}`, [gMeme, imgContent]);
+  saveToStorage('numOfSaveImg', numOfSaveImg);
+  document.location.href = 'myMemes.html';
 }
 
 function _createImages() {
