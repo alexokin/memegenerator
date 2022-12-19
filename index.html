@@ -8,7 +8,6 @@
     <title>Memegen</title>
   </head>
   <body class="main-layout" onload="onInit()">
-    
     <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="main-header flex align-center space-between">
       <div class="logo">Memegen</div>
@@ -28,7 +27,7 @@
         </div>
         <div class="meme-editor-panel flex column justify-center align-center">
           <input
-          title="Enter Text"
+            title="Enter Text"
             type="text"
             name="memeText"
             class="memeText"
@@ -37,13 +36,31 @@
             oninput="onSetLineText(this.value)"
           />
           <div class="btn-line-1">
-            <button class="addline-btn" title="Add Line" onclick="onAddLine()"><span>+</span></button>
-            <button class="switchline-btn" title="Switch Line" onclick="onSwitchLine()"><span>&uarr;&darr;</span></button>
-            <button class="delete-btn" title="Delete Line" onclick="onDeleteLine()"><img src="icons/trash.png" alt="trashcan"></button>
+            <button class="addline-btn" title="Add Line" onclick="onAddLine()">
+              <span>+</span>
+            </button>
+            <button
+              class="switchline-btn"
+              title="Switch Line"
+              onclick="onSwitchLine()"
+            >
+              <span>&uarr;&darr;</span>
+            </button>
+            <button
+              class="delete-btn"
+              title="Delete Line"
+              onclick="onDeleteLine()"
+            >
+              <img src="icons/trash.png" alt="trashcan" />
+            </button>
           </div>
           <div class="btn-line-2">
-            <button onclick="clickChangeColor()" title="Pick a Color" class="colorpicker-btn">
-            <img src="icons/chooseColor.png" alt="colorpicker">
+            <button
+              onclick="clickChangeColor()"
+              title="Pick a Color"
+              class="colorpicker-btn"
+            >
+              <img src="icons/chooseColor.png" alt="colorpicker" />
             </button>
             <input
               type="color"
@@ -52,16 +69,54 @@
               hidden
               onchange="onChangeTextColor(this.value)"
             />
-            <button class="font-change-btn" title="Increase Font" onclick="onChangeFontSize(+2)"><span>A</span>
+            <button
+              class="font-change-btn"
+              title="Increase Font"
+              onclick="onChangeFontSize(+2)"
+            >
+              <span>A</span>
               +
             </button>
-            <button class="font-change-btn" title="Decrease Font" onclick="onChangeFontSize(-2)"><span>A</span>
+            <button
+              class="font-change-btn"
+              title="Decrease Font"
+              onclick="onChangeFontSize(-2)"
+            >
+              <span>A</span>
               -
+            </button>
+          </div>
+          <div class="btn-line-4">
+            <button
+              class="align-left-btn"
+              onclick="changeAlign('start')"
+              
+              data-title="Align Left"
+            >
+              <img class="icon" src="icons/lefttoright.png" alt=" " />
+            </button>
+            <button
+            class="align-center-btn"
+              onclick="changeAlign('center')"
+            >
+              <img
+                class="icon"
+                src="icons/center.png"
+                alt=" "
+              />
+            </button>
+            <button
+            class="align-right-btn"
+              onclick="changeAlign('end')"
+            >
+              <img class="icon" src="icons/righttoleft.png" alt=" " />
             </button>
           </div>
           <div class="btn-line-3">
             <button class="save-btn" onclick="saveMeme()">Save</button>
-            <button class="download-btn"><a href="#" onclick="downloadMeme(this)">Download</a></button>
+            <button class="download-btn">
+              <a href="#" onclick="downloadMeme(this)">Download</a>
+            </button>
           </div>
         </div>
       </section>

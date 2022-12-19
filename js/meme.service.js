@@ -37,6 +37,40 @@ function moveLine(dx, dy) {
   gMeme.lines[gMeme.selectedLineIdx].y += dy;
 }
 
+function changeAlign(align) {
+  if (gMeme.lines.length === 1 && gMeme.lines[0].txt === '') return;
+  gMeme.lines[gMeme.selectedLineIdx].align = align;
+  if (align === 'end') { }
+  var posX = getPosXToWrite(gMeme.selectedLineIdx);
+  gMeme.lines[gMeme.selectedLineIdx].x = posX;
+  renderMeme();
+  
+}
+
+function getPosXToWrite(lineIdx) {
+  var elCanvas = getElCanvas();
+  var xPos;
+  switch (gMeme.lines[lineIdx].align) {
+      case 'start':
+          {
+              xPos = 50;
+              break;
+          }
+      case 'center':
+          {
+              xPos = elCanvas.width / 2;
+              break;
+          }
+      case 'end':
+          {
+              xPos = elCanvas.width - 50;
+              break;
+          }
+  }
+  gMeme.lines[lineIdx].x = xPos;
+  return xPos;
+}
+
 function getImgs() {
   return gImgs;
 }
